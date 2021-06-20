@@ -46,6 +46,7 @@ import config
 from apscheduler.jobstores.sqlalchemy import SQLAlchemyJobStore
 from flask_apscheduler import APScheduler
 #from apscheduler.schedulers.background import BackgroundScheduler
+from werkzeug.debug import DebuggedApplication
 from models import db
 
 app = Flask(__name__)
@@ -175,6 +176,10 @@ with app.app_context():
 
     # Register routes
     app.config.from_object(app_config)
+    #enable debug
+    if app_config.DEBUG is True:
+        app.debug = True
+        app.wsgi_app = DebuggedApplication(app.wsgi_app, True)
 
     # Add API
     api = Api(app, decorators=[csrf.exempt])
