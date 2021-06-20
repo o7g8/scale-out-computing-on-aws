@@ -235,7 +235,7 @@ INSTANCE_FAMILY=`curl --silent  http://169.254.169.254/latest/meta-data/instance
 
 # If GPU instance, disable NOUVEAU drivers before installing DCV as this require a reboot
 # Rest of the DCV configuration is managed by ComputeNodeInstallDCV.sh
-GPU_INSTANCE_FAMILY=(p2 p3 g2 g3 g4 g4dn)
+GPU_INSTANCE_FAMILY=(p2 p3 g2 g3 g3s g4 g4dn)
 if [[ "${GPU_INSTANCE_FAMILY[@]}" =~ "${INSTANCE_FAMILY}" ]];
 then
     echo "Detected GPU instance .. disable NOUVEAU driver"

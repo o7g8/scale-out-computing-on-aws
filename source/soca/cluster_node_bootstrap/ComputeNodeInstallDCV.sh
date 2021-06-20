@@ -7,7 +7,7 @@ DCV_HOST_ALTNAME=$(hostname | cut -d. -f1)
 AWS=$(which aws)
 INSTANCE_FAMILY=`curl --silent  http://169.254.169.254/latest/meta-data/instance-type | cut -d. -f1`
 echo "Detected Instance family $INSTANCE_FAMILY"
-GPU_INSTANCE_FAMILY=(g3 g4 g4dn)
+GPU_INSTANCE_FAMILY=(g3 g3s g4 g4dn)
 
 # Install Gnome or  Mate Desktop
 if [[ $SOCA_BASE_OS == "rhel7" ]]
